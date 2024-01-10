@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ToDoApp.Models;
 
-namespace ToDoApp.Controllers 
+namespace ToDoApp.Controllers
 {
     public class ToDoController : Controller
     {
@@ -21,9 +21,9 @@ namespace ToDoApp.Controllers
         // GET: ToDo
         public async Task<IActionResult> Index()
         {
-              return _context.Todo != null ? 
-                          View(await _context.Todo.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Todo'  is null.");
+            return _context.Todo != null ?
+                        View(await _context.Todo.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Todo'  is null.");
         }
 
         // GET: ToDo/Details/5
@@ -149,14 +149,14 @@ namespace ToDoApp.Controllers
             {
                 _context.Todo.Remove(todo);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TodoExists(int id)
         {
-          return (_context.Todo?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Todo?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
